@@ -24,16 +24,30 @@ console.log ('we are connected')
 // -historiacl impacts
 // -'doom calculator' graphic representation of 
 // 
-// DUMMY FETCH CODE
+
+// NEOW address with date at 2021-10-01
+// https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c
+
+// DUMMY FETCH CODE taken straight from the OMDB homework
+const DOMAIN = 'http://www.omdbapi.com/';
+const API_KEY = 'afc12be0'
+const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
+
+
+
+// fetch address should go like this: 
+//   fetch(`${BASE_URL}s=${title}`)
+fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c')
+    .then((res) => { return res.json() })
+
+    .then((resJSON) => {
+      console.log(resJSON)
+      console.log(resJSON.near_earth_objects)
+
+      // renderList(resJSON)
+    })
+
 // const button = document.querySelector('button')
 // button.addEventListener('click', () => {
 //   let title = document.getElementById('blank').value
-
-//   fetch(`${BASE_URL}s=${title}`)
-//     .then((res) => { return res.json() })
-
-//     .then((resJSON) => {
-//       console.log(resJSON)
-//       renderList(resJSON.Search)
-//     })
 // })
