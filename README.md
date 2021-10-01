@@ -48,7 +48,7 @@ Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.g
 
 - Fully functioning in browser app utilizing html, javascript, and styled with css
 
-- App Functionality: user gives HEED a date and HEED returns all "potentially hazardous asteroids." Info for each NEOo will include at least size, speed, and "miss distance." An additional return will include the top three non-hazardous NEOo with the same data. This should account for the eventuality of returning no PHA NEOo.
+- App Functionality: user gives HEED a date and HEED returns all "potentially hazardous asteroids" within their default week timeframe. Info for each NEOo will include at least size, speed, and "miss distance." An additional return will include the top three non-hazardous NEOo with the same data. This should account for the eventuality of returning no PHA NEOo.
 
 ### Post MVP objectives
 
