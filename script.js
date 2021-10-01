@@ -7,12 +7,22 @@ console.log ('we are connected')
 // 4 extract miss_distance.miles
 // 5 extract relative_velocity.mile_per_hour
 // 6 extract "estimated_diameter_max"
+// 7 parse boolean for hazardous key
+// 8 sort data for true/false into separate dom threads
+// 9 submit button that fetches NEO one week out, should be 7 results
+// 10 button click should also:
+//  - initiate function for parsing hazardous or not
+//  - build hazardous and nonhazardous into distinct divs (based on class assignment which is result of boolean?)
+// 11 append divs with proper styling
+
+// A potentially hazardous object (PHO) is a near-Earth object whose orbit brings it within 4.7 million miles (7.5 million km) of Earth’s orbit, and is greater than 500 feet (140 meters) in size.
+
+
 // 
-// - parse boolean for hazardous key
-// - sort data for true/false into separate dom templates
-// 
-// 
-// 
+// POST MVP
+// -asteroid impact animation
+// -historiacl impacts
+// -'doom calculator' graphic representation of 
 // 
 // DUMMY FETCH CODE
 // const button = document.querySelector('button')
