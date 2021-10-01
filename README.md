@@ -55,3 +55,6 @@ Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.g
 - animated "tone" styling for both hazardous and non-hazardous
 - asteroid animation (in background?): when the search lands asteroid impacts the page
 - historical links for asteroid impacts
+- doom calcultor: retrieve data for likelyhood of impact or graphic representing scale of cataclysmic likelyhood
+- images for asteroid size grades
+- reference for impact effects based on size and speed
