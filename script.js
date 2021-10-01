@@ -6,19 +6,22 @@
 // 5 extract relative_velocity.mile_per_hour
 // 6 extract "estimated_diameter_max"
 // 
+// - parse boolean for hazardous key
+// - sort data for true/false into separate dom templates
 // 
 // 
 // 
+// 
+// DUMMY FETCH CODE
+// const button = document.querySelector('button')
+// button.addEventListener('click', () => {
+//   let title = document.getElementById('blank').value
 
-const button = document.querySelector('button')
-button.addEventListener('click', () => {
-  let title = document.getElementById('blank').value
+//   fetch(`${BASE_URL}s=${title}`)
+//     .then((res) => { return res.json() })
 
-  fetch(`${BASE_URL}s=${title}`)
-    .then((res) => { return res.json() })
-
-    .then((resJSON) => {
-      console.log(resJSON)
-      renderList(resJSON.Search)
-    })
-})
+//     .then((resJSON) => {
+//       console.log(resJSON)
+//       renderList(resJSON.Search)
+//     })
+// })
