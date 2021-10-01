@@ -43,7 +43,7 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
     .then((resJSON) => {
       console.log(resJSON)
       console.log(resJSON.near_earth_objects)
-
+// to return PHO name should go resJSON.near_earth_objects.date[1].is_potentially_hazardous_asteroid
       // renderList(resJSON)
     })
 
