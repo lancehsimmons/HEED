@@ -1,3 +1,5 @@
+console.log ('we are connected')
+
 // PSEUDO JS
 // 1 get the fetch working
 // 2 get the fetch in the terminal
