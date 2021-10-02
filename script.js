@@ -36,10 +36,6 @@ const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 // const button = document.querySelector('button')
 // button.addEventListener('click', () => { let title = document.getElementById('blank').value })
 
-const testArr = []
-console.log(testArr.length)
-
-
 const missMiles = []
 const isHazardous = []
 const pho = []
@@ -130,9 +126,13 @@ const warningSystem = (hazardous, nonhazardous) => {
     document.body.appendChild(warning)
 
     hazardous.forEach((asteroid) => {
+      console.log(asteroid)
       const phoDiv = document.createElement('div')
       phoDiv.className = 'pho'
-      phoDiv.innerText = hazardous[`${asteroid}`]
+      for (let i = 0; i < hazardous.length; i++) {
+        // inner text should be equal to value of pho index
+        phoDiv.innerText = asteroid
+      }
       document.body.appendChild(phoDiv)
     })
   }
