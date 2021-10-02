@@ -133,8 +133,11 @@ const warningSystem = (hazardous, nonhazardous, speed, size) => {
     hazardous.forEach((asteroid) => {
       // console.log(asteroid)
       const phoDiv = document.createElement('div')
+      // const phoMISS = document.createElement('p')
+      // const phoSIZE = document.createElement('p')
+      // const phoSPEED = document.createElement('p')
       phoDiv.className = 'pho'
-      phoDiv.innerText = `A near miss at only ${Math.round(asteroid)} miles`
+      phoMISS.innerText = `A near miss at only ${Math.round(asteroid)} miles`
       document.body.appendChild(phoDiv)
     })
   }
