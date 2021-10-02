@@ -36,6 +36,10 @@ const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 // const button = document.querySelector('button')
 // button.addEventListener('click', () => { let title = document.getElementById('blank').value })
 
+const testArr = []
+console.log(testArr.length)
+
+
 const missMiles = []
 const isHazardous = []
 const pho = []
@@ -83,7 +87,6 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
       }
       phoExtractor(isHazardous, missMiles)
       warningSystem(pho, nonPho)
-
     })
 
 
@@ -120,25 +123,29 @@ const warningDiv = ".warningzone"
 const nullDiv = '.nullzone'
 const warningSystem = (hazardous, nonhazardous) => {
   
-const warning = document.createElement('h3')
-warning.id = 'warning'
-warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+  if (pho.length > 0) {
+    const warning = document.createElement('h3')
+    warning.id = 'warning'
+    warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+    document.body.appendChild(warning)
+
+    hazardous.forEach((asteroid) => {
+      const phoDiv = document.createElement('div')
+      phoDiv.className = 'pho'
+      phoDiv.innerText = hazardous[`${asteroid}`]
+      document.body.appendChild(phoDiv)
+    })
+  }
+
   
-  hazardous.forEach((asteroid) => {
-    const phoDiv = document.createElement('div')
-    phoDiv.className = 'pho'
-    phoDiv.innerText = hazardous[asteroid]
-    document.body.appendChild(phoDiv)
-  })
 
   nonhazardous.forEach((asteroid) => {
-    const phoDiv = document.createElement('div')
-    phoDiv.className = 'pho'
-    phoDiv.innerText = nonhazardous[asteroid]
-    document.body.appendChild(phoDiv)
+    const nonphoDiv = document.createElement('div')
+    nonphoDiv.className = 'nonPho'
+    nonphoDiv.innerText = nonhazardous[asteroid]
+    document.body.appendChild(nonphoDiv)
   })
 
-  
   // hazardous.forEach(asteroid)
   // const phoDiv = document.createElement('div')
   // phoDiv.className = 'nonpho'
