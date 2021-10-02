@@ -60,7 +60,12 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         dates.push(property)
       }
       console.log(dates)
-      for (i = 0; i < dates.length; i++) {console.log(dates[i])}
+      let neodDay
+      for (i = 0; i < dates.length; i++) {
+        console.log(dates[i])
+        neoDay = dates[i]
+        console.log(neoExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
+      }
       
 
     })
