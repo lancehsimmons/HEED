@@ -57,6 +57,24 @@ Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.g
 - historical links for asteroid impacts
 
 
+### Notable Snippets
+getting the relevant data for each asteroid was tough. The first keyname for every date returned from the API search was an 'illegal' javascript name so I had to learn to use bracket notation to make an exception for that keyname format.
+
+      let neodDay
+      for (i = 0; i < dates.length; i++) {
+        console.log(dates[i])
+        neoDay = dates[i]
+        // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
+        console.log(dateExtractor[`${neoDay}`][0].
+
+After that once I reached the level of extracting data for each asteroid I realized I could call the constant for the object I wanted to get ASTEROID. Felt like I was wrangling comets in my code!
+
+      const asteroidExtractor = (day) => {
+        day.forEach(asteroid => {
+          console.log(asteroid)
+          console.log(asteroid.close_approach_data[0].miss_distance.miles)
+
+
 
 
 

@@ -77,6 +77,7 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
     
 const asteroidExtractor = (day) => {
   day.forEach(asteroid => {
+    console.log(asteroid)
     console.log(asteroid.close_approach_data[0].miss_distance.miles)
     // if (asteroid = true) {
     //   const phoDiv = document.createElement('div')
