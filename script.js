@@ -82,7 +82,10 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         asteroidExtractor(dateExtractor[`${neoDay}`])
       }
       phoExtractor(isHazardous, missMiles)
+      warningSystem(pho, nonPho)
+
     })
+
 
     const phoExtractor = (is, miles) => {
       for (let i = 0; i < is.length; i++) {
@@ -97,8 +100,6 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
     }
 
 
-    
-
 
 
 const asteroidExtractor = (day) => {
@@ -112,25 +113,45 @@ const asteroidExtractor = (day) => {
     // this line puts all of the hazardous booleans in an array
     // console.log(asteroid.is_potentially_hazardous_asteroid)
     isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
-
-    
   })
   
 }
+const warningDiv = ".warningzone"
+const nullDiv = '.nullzone'
+const warningSystem = (hazardous, nonhazardous) => {
+  
+const warning = document.createElement('h3')
+warning.id = 'warning'
+warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+  
+  hazardous.forEach((asteroid) => {
+    const phoDiv = document.createElement('div')
+    phoDiv.className = 'pho'
+    phoDiv.innerText = hazardous[asteroid]
+    document.body.appendChild(phoDiv)
+  })
 
-console.log(missMiles)
-console.log(isHazardous)
+  nonhazardous.forEach((asteroid) => {
+    const phoDiv = document.createElement('div')
+    phoDiv.className = 'pho'
+    phoDiv.innerText = nonhazardous[asteroid]
+    document.body.appendChild(phoDiv)
+  })
+
+  
+  // hazardous.forEach(asteroid)
+  // const phoDiv = document.createElement('div')
+  // phoDiv.className = 'nonpho'
+  // phoDiv.innerText = hazardous[asteroid]
+  // document.body.aqppendChild(phoDiv)
+  
+}
+
+
+// console.log(missMiles)
+// console.log(isHazardous)
 console.log(pho)
 console.log(nonPho)
 
-//     // const warning = document.createElement('h3')
-//     // warning.id = 'warning'
-//     // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-
-// currently makes a div for each asteroid miss distance if inside the asteroidExtractor
-    //     // const phoDiv = document.createElement('div')
-    //     // phoDiv.className = 'pho'
-    //     // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-    //     // document.body.aqppendChild(phoDiv)
 
 
