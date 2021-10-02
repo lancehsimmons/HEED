@@ -129,10 +129,7 @@ const warningSystem = (hazardous, nonhazardous) => {
       console.log(asteroid)
       const phoDiv = document.createElement('div')
       phoDiv.className = 'pho'
-      for (let i = 0; i < hazardous.length; i++) {
-        // inner text should be equal to value of pho index
-        phoDiv.innerText = asteroid
-      }
+      phoDiv.innerText = `A near miss at only ${Math.round(asteroid)} miles`
       document.body.appendChild(phoDiv)
     })
   }
@@ -142,7 +139,7 @@ const warningSystem = (hazardous, nonhazardous) => {
   nonhazardous.forEach((asteroid) => {
     const nonphoDiv = document.createElement('div')
     nonphoDiv.className = 'nonPho'
-    nonphoDiv.innerText = nonhazardous[asteroid]
+    nonphoDiv.innerText = asteroid
     document.body.appendChild(nonphoDiv)
   })
 
