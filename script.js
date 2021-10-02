@@ -41,6 +41,8 @@ const pho = [] /*array of miss distances*/
 const nonPho = [] /*array of miss distances*/
 const phoSizeAll = []
 const phoSpeedAll = []
+const phoSize = []
+const phoSpeed = []
 
 
 // fetch address should go like this: 
@@ -77,16 +79,18 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         // on this line asteroidExtractor is returning the date plus the index of each asteroid
         asteroidExtractor(dateExtractor[`${neoDay}`])
       }
-      phoExtractor(isHazardous, missMiles)
+      phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
       warningSystem(pho, nonPho)
     })
 
 
-    const phoExtractor = (is, miles) => {
+    const phoExtractor = (is, miles, size, speed) => {
       for (let i = 0; i < is.length; i++) {
         if (is[i] === true) {
           // console.log(miles[i])
           pho.push(miles[i])
+          phoSize.push(size[i])
+          phoSpeed.push(speed[i])
         }
         else if (is[i] === false) {
           nonPho.push(miles[i])
@@ -108,8 +112,9 @@ const asteroidExtractor = (day) => {
     // console.log(asteroid.is_potentially_hazardous_asteroid)
     isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
 
+    // all sizes in an array
     phoSizeAll.push(asteroid.estimated_diameter.feet.estimated_diameter_max)
-
+    // all speeds in an array
     phoSpeedAll.push(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)
 
   })
@@ -117,7 +122,7 @@ const asteroidExtractor = (day) => {
 }
 const warningDiv = ".warningzone"
 const nullDiv = '.nullzone'
-const warningSystem = (hazardous, nonhazardous) => {
+const warningSystem = (hazardous, nonhazardous, speed, size) => {
   
   if (pho.length > 0) {
     const warning = document.createElement('h3')
@@ -150,8 +155,10 @@ const warningSystem = (hazardous, nonhazardous) => {
 // console.log(isHazardous)
 // console.log(pho)
 // console.log(nonPho)
-console.log(phoSizeAll)
-console.log(phoSpeedAll)
+// console.log(phoSizeAll)
+// console.log(phoSpeedAll)
+console.log(phoSize)
+console.log(phoSpeed)
 
 
 
