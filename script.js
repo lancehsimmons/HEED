@@ -36,6 +36,11 @@ const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 // const button = document.querySelector('button')
 // button.addEventListener('click', () => { let title = document.getElementById('blank').value })
 
+const missMiles = []
+const isHazardous = []
+const pho = []
+const nonPho = []
+
 
 // fetch address should go like this: 
 //   fetch(`${BASE_URL}s=${title}`)
@@ -76,11 +81,25 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         // on this line asteroidExtractor is returning the date plus the index of each asteroid
         asteroidExtractor(dateExtractor[`${neoDay}`])
       }
+      phoExtractor(isHazardous, missMiles)
     })
+
+    const phoExtractor = (is, miles) => {
+      for (let i = 0; i < is.length; i++) {
+        if (is[i] === true) {
+          // console.log(miles[i])
+          pho.push(miles[i])
+        }
+        else if (is[i] === false) {
+          nonPho.push(miles[i])
+        }
+      }
+    }
+
+
     
 
-const missMiles = []
-const isHazardous = []
+
 
 const asteroidExtractor = (day) => {
   day.forEach(asteroid => {
@@ -94,50 +113,24 @@ const asteroidExtractor = (day) => {
     // console.log(asteroid.is_potentially_hazardous_asteroid)
     isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
 
-    // currently makes a div for each asteroid miss distance
     
-    // for (i = 0; i < isHazardous.length; i++) {
-      
-    //   if (isHazardous[i] = true) {
-
-    //     pho.push(missMiles[i]) } }
-
-    //     // const warning = document.createElement('h3')
-    //     // warning.id = 'warning'
-    //     // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-
-
-    //     // const phoDiv = document.createElement('div')
-    //     // phoDiv.className = 'pho'
-    //     // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-    //     // document.body.aqppendChild(phoDiv)
-    //   }
-    // }
-    // else {
-    //   const nonPhoDiv = document.createElement('div')
-    //   nonPhoDiv.className = 'nonpho'
-    // }
   })
   
 }
 
-const pho = []
 console.log(missMiles)
 console.log(isHazardous)
-
-const missMaker = (hazard) => {
-  hazard.forEach((val, index) => {
-  if (val) {
-    pho.push(missMiles[index])
-  }
-  })
-}
-missMaker(isHazardous)
 console.log(pho)
+console.log(nonPho)
 
-// for ( let i = 0; i < isHazardous.length; i++) {
-//   if (isHazardous[i] = true) {
-//     console.log(missMiles[i])
-//     pho.push(missMiles[i])
-//   }
-// }
+//     // const warning = document.createElement('h3')
+//     // warning.id = 'warning'
+//     // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+
+// currently makes a div for each asteroid miss distance if inside the asteroidExtractor
+    //     // const phoDiv = document.createElement('div')
+    //     // phoDiv.className = 'pho'
+    //     // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
+    //     // document.body.aqppendChild(phoDiv)
+
+
