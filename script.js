@@ -62,12 +62,12 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
       console.log(dates)
       let neodDay
       for (i = 0; i < dates.length; i++) {
-        console.log(dates[i])
+        // console.log(dates[i])
         neoDay = dates[i]
         // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
-        console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
+        // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
         // logging the number of asteroids per day (one more than array length). hopefully just one more step to get a boolean for every asteroid
-        console.log(dateExtractor[`${neoDay}`].length)
+        // console.log(dateExtractor[`${neoDay}`].length + 1)
         // push all the booleans into an array
         // check each using if/else
         // use if/else func to either build divs or send object data to the appropriate build div function
@@ -75,16 +75,26 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
       }
     })
     
+
+    const missMiles = []
 const asteroidExtractor = (day) => {
   day.forEach(asteroid => {
-    console.log(asteroid)
-    console.log(asteroid.close_approach_data[0].miss_distance.miles)
+    // console.log(asteroid)
+    // console.log(asteroid.close_approach_data[0].miss_distance.miles)
+    // put distances in array for true and false
+    // 
+    missMiles.push(asteroid.close_approach_data[0].miss_distance.miles)
 
-    if (asteroid.is_potentially_hazardous_asteroid = true) {
-      const phoDiv = document.createElement('div')
-      phoDiv.className = 'pho'
-      phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-      document.body.appendChild(phoDiv)
+    // currently makes a div for each asteroid miss distance
+    
+    for (i = 0; i < missMiles.length; i++) {
+      
+      if (asteroid.is_potentially_hazardous_asteroid = true) {
+        const phoDiv = document.createElement('div')
+        phoDiv.className = 'pho'
+        phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
+        document.body.aqppendChild(phoDiv)
+      }
     }
     // else {
     //   const nonPhoDiv = document.createElement('div')
@@ -92,3 +102,5 @@ const asteroidExtractor = (day) => {
     // }
   })
 }
+console.log(missMiles)
+
