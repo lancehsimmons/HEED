@@ -22,7 +22,7 @@ console.log ('we are connected')
 // POST MVP
 // -asteroid impact animation
 // -historiacl impacts
-// -'doom calculator' graphic representation of 
+// -'doom calculator' graphic representation of ?
 // 
 
 // NEOW address with date at 2021-10-01
