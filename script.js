@@ -91,34 +91,53 @@ const asteroidExtractor = (day) => {
     missMiles.push(asteroid.close_approach_data[0].miss_distance.miles)
 
     // this line puts all of the hazardous booleans in an array
-    console.log(asteroid.is_potentially_hazardous_asteroid)
+    // console.log(asteroid.is_potentially_hazardous_asteroid)
     isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
 
     // currently makes a div for each asteroid miss distance
     
-    for (i = 0; i < missMiles.length; i++) {
+    // for (i = 0; i < isHazardous.length; i++) {
       
-      if (asteroid.is_potentially_hazardous_asteroid = true) {
+    //   if (isHazardous[i] = true) {
 
-        // console.log(missMiles[i])
+    //     pho.push(missMiles[i]) } }
 
-        // const warning = document.createElement('h3')
-        // warning.id = 'warning'
-        // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+    //     // const warning = document.createElement('h3')
+    //     // warning.id = 'warning'
+    //     // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
 
 
-        // const phoDiv = document.createElement('div')
-        // phoDiv.className = 'pho'
-        // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-        // document.body.aqppendChild(phoDiv)
-      }
-    }
+    //     // const phoDiv = document.createElement('div')
+    //     // phoDiv.className = 'pho'
+    //     // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
+    //     // document.body.aqppendChild(phoDiv)
+    //   }
+    // }
     // else {
     //   const nonPhoDiv = document.createElement('div')
     //   nonPhoDiv.className = 'nonpho'
     // }
   })
+  
 }
+
+const pho = []
 console.log(missMiles)
 console.log(isHazardous)
 
+const missMaker = (hazard) => {
+  hazard.forEach((val, index) => {
+  if (val) {
+    pho.push(missMiles[index])
+  }
+  })
+}
+missMaker(isHazardous)
+console.log(pho)
+
+// for ( let i = 0; i < isHazardous.length; i++) {
+//   if (isHazardous[i] = true) {
+//     console.log(missMiles[i])
+//     pho.push(missMiles[i])
+//   }
+// }
