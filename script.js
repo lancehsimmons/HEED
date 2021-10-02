@@ -44,11 +44,12 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
 
     .then((resJSON) => {
       // console.log(resJSON)
+      // reference for object structure of neo object
       // console.log(resJSON.near_earth_objects)
       // renderList(resJSON)
       // this one works to get the boolean back from first array in NEO object
       // I think I might have to loop over n_e_o to get the actual date value objects so that the boolean can be programmatically extracted from the json
-      console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
+      // console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
 
       let dateExtractor = resJSON.near_earth_objects
 
@@ -59,7 +60,7 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         // console.log(property)
         dates.push(property)
       }
-      console.log(dates)
+      // console.log(dates)
       let neodDay
       for (i = 0; i < dates.length; i++) {
         // console.log(dates[i])
@@ -71,29 +72,45 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         // push all the booleans into an array
         // check each using if/else
         // use if/else func to either build divs or send object data to the appropriate build div function
+
+        // on this line asteroidExtractor is returning the date plus the index of each asteroid
         asteroidExtractor(dateExtractor[`${neoDay}`])
       }
     })
     
 
-    const missMiles = []
+const missMiles = []
+const isHazardous = []
+
 const asteroidExtractor = (day) => {
   day.forEach(asteroid => {
     // console.log(asteroid)
     // console.log(asteroid.close_approach_data[0].miss_distance.miles)
     // put distances in array for true and false
-    // 
+    // this line puts all of the miss miles in an array
     missMiles.push(asteroid.close_approach_data[0].miss_distance.miles)
+
+    // this line puts all of the hazardous booleans in an array
+    console.log(asteroid.is_potentially_hazardous_asteroid)
+    isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
 
     // currently makes a div for each asteroid miss distance
     
     for (i = 0; i < missMiles.length; i++) {
       
       if (asteroid.is_potentially_hazardous_asteroid = true) {
-        const phoDiv = document.createElement('div')
-        phoDiv.className = 'pho'
-        phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-        document.body.aqppendChild(phoDiv)
+
+        // console.log(missMiles[i])
+
+        // const warning = document.createElement('h3')
+        // warning.id = 'warning'
+        // warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+
+
+        // const phoDiv = document.createElement('div')
+        // phoDiv.className = 'pho'
+        // phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
+        // document.body.aqppendChild(phoDiv)
       }
     }
     // else {
@@ -103,4 +120,5 @@ const asteroidExtractor = (day) => {
   })
 }
 console.log(missMiles)
+console.log(isHazardous)
 
