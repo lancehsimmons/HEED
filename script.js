@@ -33,6 +33,8 @@ const DOMAIN = 'http://www.omdbapi.com/';
 const API_KEY = 'afc12be0'
 const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 
+// const button = document.querySelector('button')
+// button.addEventListener('click', () => { let title = document.getElementById('blank').value })
 
 
 // fetch address should go like this: 
@@ -43,12 +45,16 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
     .then((resJSON) => {
       console.log(resJSON)
       console.log(resJSON.near_earth_objects)
-// to return PHO name should go resJSON.near_earth_objects.date[1].is_potentially_hazardous_asteroid
       // renderList(resJSON)
-      console.log(resJSON.near_earth_objects[2021-10-01])
+      // this one works to get the boolean back from first array in NEO object
+      // I think I might have to loop over n_e_o to get the actual date value objects so that the boolean can be programmatically extracted from the json
+      console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
+
+      let neoExtractor = resJSON.near_earth_objects
+
+      for (var property in neoExtractor) {
+        console.log(property)
+      }
+
     })
 
-// const button = document.querySelector('button')
-// button.addEventListener('click', () => {
-//   let title = document.getElementById('blank').value
-// })
