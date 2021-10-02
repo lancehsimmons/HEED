@@ -40,6 +40,8 @@ Data-set: All the data is from the NASA JPL Asteroid team (http://neo.jpl.nasa.g
 ### Wireframes
 <https://www.figma.com/file/wEVC5otS0wOmJ641jBaY6P/HEED?node-id=0%3A1>
 
+<https://www.figma.com/file/e0OrEynagNFvYGFdXOxrD8/HEEDdt?node-id=0%3A1>
+
 ## MVP objectives
 
 - Incorporate the NASA Asteroids - NeoWs API

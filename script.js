@@ -68,6 +68,9 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
         console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
         // logging the number of asteroids per day. hopefully just one more step to get a boolean for every asteroid
         console.log(dateExtractor[`${neoDay}`].length + 1)
+        // push all the booleans into an array
+        // check each using if/else
+        // use if/else func to either build divs or send object data to the appropriate build div
       }
       
 
