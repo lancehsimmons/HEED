@@ -79,11 +79,13 @@ const asteroidExtractor = (day) => {
   day.forEach(asteroid => {
     console.log(asteroid)
     console.log(asteroid.close_approach_data[0].miss_distance.miles)
-    // if (asteroid = true) {
-    //   const phoDiv = document.createElement('div')
-    //   phoDiv.className = 'pho'
-    //   phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
-    // }
+
+    if (asteroid.is_potentially_hazardous_asteroid = true) {
+      const phoDiv = document.createElement('div')
+      phoDiv.className = 'pho'
+      phoDiv.innerText = asteroid.close_approach_data[0].miss_distance.miles
+      document.body.appendChild(phoDiv)
+    }
     // else {
     //   const nonPhoDiv = document.createElement('div')
     //   nonPhoDiv.className = 'nonpho'
