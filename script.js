@@ -43,8 +43,8 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
     .then((res) => { return res.json() })
 
     .then((resJSON) => {
-      console.log(resJSON)
-      console.log(resJSON.near_earth_objects)
+      // console.log(resJSON)
+      // console.log(resJSON.near_earth_objects)
       // renderList(resJSON)
       // this one works to get the boolean back from first array in NEO object
       // I think I might have to loop over n_e_o to get the actual date value objects so that the boolean can be programmatically extracted from the json
@@ -52,9 +52,16 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
 
       let neoExtractor = resJSON.near_earth_objects
 
+      let dates = []
+      // this for loop generates an array of date objects. 
+      // then should be able to iterate PHO booleans and split dates into PHO and benign asteroid arrays
       for (var property in neoExtractor) {
-        console.log(property)
+        // console.log(property)
+        dates.push(property)
       }
+      console.log(dates)
+      for (i = 0; i < dates.length; i++) {console.log(dates[i])}
+      
 
     })
 
