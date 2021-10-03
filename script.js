@@ -146,9 +146,13 @@ const phoObjectConstructor = (miss, size, speed) => {
   const warningDiv = ".warningzone"
   const nullDiv = '.nullzone'
 
-  const warningSystem = (object) => {
-
+const warningSystem = (object) => {
+    
+  console.log(object)
+  
     if (pho.length > 0) {
+
+      console.log(object)
 
       const warning = document.createElement('h2')
       warning.id = 'warning'
