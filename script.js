@@ -46,9 +46,9 @@ const phoSize = []
 const phoSpeed = []
 
 const phoData = {
-  miss: null,
-  size: null,
-  speed: null
+  miss: [],
+  size: [],
+  speed: []
 }
 
 const nonPho = [] /*array of miss distances*/
@@ -111,90 +111,81 @@ const phoExtractor = (is, miles, size, speed) => {
 // builds object of pho data includine miss distance, size, and speed
 const phoObjectConstructor = (miss, size, speed) => {
   for (let i = 0; i < miss.length; i++) {
-    phoData.miss = miss[i]
-    phoData.size = size[i]
-    phoData.speed = speed[i]
+    phoData.miss = miss.push[i]
+    phoData.size = size.push[i]
+    phoData.speed = speed.push[i]
     console.log(phoData)
   }
 }
 
 
-const asteroidExtractor = (day) => {
-  day.forEach(asteroid => {
-    // console.log(asteroid)
-    // console.log(asteroid.close_approach_data[0].miss_distance.miles)
-    // this line puts all of the miss miles in an array
-    missMiles.push(asteroid.close_approach_data[0].miss_distance.miles)
-
-    // this line puts all of the hazardous booleans in an array
-    // console.log(asteroid.is_potentially_hazardous_asteroid)
-    isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
-
-    // all sizes in an array
-    phoSizeAll.push(asteroid.estimated_diameter.feet.estimated_diameter_max)
-    // all speeds in an array
-    phoSpeedAll.push(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)
-
-  })
-
-}
-const warningDiv = ".warningzone"
-const nullDiv = '.nullzone'
-
-const warningSystem = (hazardous, nonhazardous, speed, size) => {
-
-
-
-  if (pho.length > 0) {
-
-  const warning = document.createElement('h2')
-    warning.id = 'warning'
-    warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-    document.querySelector('.warning').appendChild(warning)
-
-  const phoDiv = document.createElement('div')
-    phoDiv.className = 'pho'
-    document.querySelector('.warningzone').appendChild(phoDiv)
-
-
-  const alert = document.createElement('h3')
-    alert.className = 'pho-body'
-    alert.innerText = "ALERT PHO DETECTED"
-    phoDiv.appendChild(alert)
-
-
-  hazardous.forEach((asteroid) => {
+  const asteroidExtractor = (day) => {
+    day.forEach(asteroid => {
       // console.log(asteroid)
-    const phoMISS = document.createElement('p')
-      phoMISS.className = 'pho-body'
-    phoMISS.innerText = `A near miss at only ${Math.round(asteroid)} miles`
-    phoDiv.appendChild(phoMISS)
+      // console.log(asteroid.close_approach_data[0].miss_distance.miles)
+      // this line puts all of the miss miles in an array
+      missMiles.push(asteroid.close_approach_data[0].miss_distance.miles)
 
-  })
-    
-  speed.forEach((asteroid) => {
-    const phoSPEED = document.createElement('p')
-      phoSPEED.className = 'pho-body'
-      phoSPEED.innerText = `speed ${asteroid} mph`
-      phoDiv.appendChild(phoSPEED)
-    })
-    
-  size.forEach((asteroid) => {
-      // console.log(asteroid)
-    const phoSIZE = document.createElement('p')
-      phoSIZE.className = 'pho-body'
-      phoSIZE.innerText = `size ${asteroid} feet`
-      phoDiv.appendChild(phoSIZE)
+      // this line puts all of the hazardous booleans in an array
+      // console.log(asteroid.is_potentially_hazardous_asteroid)
+      isHazardous.push(asteroid.is_potentially_hazardous_asteroid)
+
+      // all sizes in an array
+      phoSizeAll.push(asteroid.estimated_diameter.feet.estimated_diameter_max)
+      // all speeds in an array
+      phoSpeedAll.push(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)
 
     })
 
   }
+  const warningDiv = ".warningzone"
+  const nullDiv = '.nullzone'
 
-  const nonPhoDiv = document.createElement('h3')
-  const nonPhoCount = nonhazardous.length
-  nonPhoDiv.innerText = `${nonPhoCount} other asteroids were detected`
+  const warningSystem = (object) => {
 
-}
+    if (pho.length > 0) {
+
+      const warning = document.createElement('h2')
+      warning.id = 'warning'
+      warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+      document.querySelector('.warning').appendChild(warning)
+
+      const phoDiv = document.createElement('div')
+      phoDiv.className = 'pho'
+      document.querySelector('.warningzone').appendChild(phoDiv)
+
+
+      const alert = document.createElement('h3')
+      alert.className = 'pho-alert'
+      alert.innerText = "ALERT PHO DETECTED"
+      phoDiv.appendChild(alert)
+
+
+      object.forEach((asteroid) => {
+    
+        const phoMISS = document.createElement('p')
+        phoMISS.className = 'pho-body'
+        phoMISS.innerText = `A near miss at only ${Math.round(asteroid.miss)} miles`
+        phoDiv.appendChild(phoMISS)
+
+        const PhoSpeed = document.createElement('p')
+        phoSPEED.className = 'pho-body'
+        phoSPEED.innerText = `speed: ${asteroid.speed} mph`
+        phoDiv.appendChild(phoSPEED)
+
+        const phoSIZE = document.createElement('p')
+        phoSIZE.className = 'pho-body'
+        phoSIZE.innerText = `size: ${asteroid.size} feet`
+        phoDiv.appendChild(phoSIZE)
+      })
+    }
+
+    const nonPhoDiv = document.createElement('h3')
+    const nonPhoCount = nonhazardous.length
+    nonPhoDiv.innerText = `${nonPhoCount} other asteroids were detected`
+    document.querySelector('nullzone').appendChild(nonPhoDiv)
+
+  }
 
 
 
