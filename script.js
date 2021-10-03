@@ -35,14 +35,23 @@ const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 // const button = document.querySelector('button')
 // button.addEventListener('click', () => { let title = document.getElementById('blank').value })
 
-const missMiles = []
-const isHazardous = []
-const pho = [] /*array of miss distances*/
-const nonPho = [] /*array of miss distances*/
+const isHazardous = [] /* boolean array*/
+
+const missMiles = [] /* all search miss miles*/
 const phoSizeAll = [] /* all search sizes*/
 const phoSpeedAll = [] /* all search speeds*/
+
+const pho = [] /*array of miss distances*/
 const phoSize = []
 const phoSpeed = []
+
+const phoData = {
+  miss: null,
+  size: null,
+  speed: null
+}
+
+const nonPho = [] /*array of miss distances*/
 
 
 // fetch address should go like this: 
@@ -80,10 +89,11 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
       asteroidExtractor(dateExtractor[`${neoDay}`])
     }
     phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
-    warningSystem(pho, nonPho, phoSpeed, phoSize)
+    phoObjectConstructor(pho, phoSpeed, phoSize)
+    warningSystem(phoData)
   })
 
-
+// builds arrays of hazardous and non hazardous asteroid datas
 const phoExtractor = (is, miles, size, speed) => {
   for (let i = 0; i < is.length; i++) {
     if (is[i] === true) {
@@ -98,7 +108,15 @@ const phoExtractor = (is, miles, size, speed) => {
   }
 }
 
-
+// builds object of pho data includine miss distance, size, and speed
+const phoObjectConstructor = (miss, size, speed) => {
+  for (let i = 0; i < miss.length; i++) {
+    phoData.miss = miss[i]
+    phoData.size = size[i]
+    phoData.speed = speed[i]
+    console.log(phoData)
+  }
+}
 
 
 const asteroidExtractor = (day) => {
@@ -122,7 +140,10 @@ const asteroidExtractor = (day) => {
 }
 const warningDiv = ".warningzone"
 const nullDiv = '.nullzone'
+
 const warningSystem = (hazardous, nonhazardous, speed, size) => {
+
+
 
   if (pho.length > 0) {
 
