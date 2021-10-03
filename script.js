@@ -45,11 +45,9 @@ const pho = [] /*array of miss distances*/
 const phoSpeed = []
 const phoSize = []
 
-const phoData = {
-  miss: [],
-  size: [],
-  speed: []
-}
+const phoData = []
+
+
 
 const nonPho = [] /*array of miss distances*/
 
@@ -89,38 +87,27 @@ fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDk
       asteroidExtractor(dateExtractor[`${neoDay}`])
     }
     phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
-    phoObjectConstructor(pho, phoSpeed, phoSize)
+    // phoArrayConstructor(pho, phoSpeed, phoSize)
     warningSystem(phoData)
   })
 
 // builds arrays of hazardous and non hazardous asteroid datas
-const phoExtractor = (is, miles, size, speed) => {
+const phoExtractor = (is, allMiles, allSize, allSpeed) => {
   for (let i = 0; i < is.length; i++) {
     if (is[i] === true) {
-      // console.log(miles[i])
-      pho.push(miles[i])
-      phoSize.push(size[i])
-      phoSpeed.push(speed[i])
+      // builds hazardous arrays
+      console.log(allMiles[i])
+      pho.push(allMiles[i])
+      phoSize.push(allSize[i])
+      phoSpeed.push(allSpeed[i])
+
+      phoData.push({miss: allMiles[i], size: allSize[i], speed: allSpeed[i]})
+
     }
     else if (is[i] === false) {
-      nonPho.push(miles[i])
+      nonPho.push(allMiles[i])
     }
   }
-}
-
-// builds object of pho data includine miss distance, size, and speed
-const phoObjectConstructor = (miss, size, speed) => {
-
-  phoData.miss = miss.slice()
-  phoData.size = size.slice()
-  phoData.speed = speed.slice()
-  
-  console.log(phoData)
-  // for (let i = 0; i < miss.length; i++) {
-  //   phoData.miss = miss.push[i]
-  //   phoData.size = size.push[i]
-  //   phoData.speed = speed.push[i]
-  // }
 }
 
 
@@ -147,9 +134,7 @@ const phoObjectConstructor = (miss, size, speed) => {
   const nullDiv = '.nullzone'
 
 const warningSystem = (object) => {
-    
-  console.log(object)
-  
+      
     if (pho.length > 0) {
 
       console.log(object)
@@ -177,7 +162,7 @@ const warningSystem = (object) => {
         phoMISS.innerText = `A near miss at only ${Math.round(asteroid.miss)} miles`
         phoDiv.appendChild(phoMISS)
 
-        const PhoSpeed = document.createElement('p')
+        const phoSPEED = document.createElement('p')
         phoSPEED.className = 'pho-body'
         phoSPEED.innerText = `speed: ${asteroid.speed} mph`
         phoDiv.appendChild(phoSPEED)
