@@ -42,8 +42,8 @@ const phoSizeAll = [] /* all search sizes*/
 const phoSpeedAll = [] /* all search speeds*/
 
 const pho = [] /*array of miss distances*/
-const phoSize = []
 const phoSpeed = []
+const phoSize = []
 
 const phoData = {
   miss: [],
@@ -110,12 +110,17 @@ const phoExtractor = (is, miles, size, speed) => {
 
 // builds object of pho data includine miss distance, size, and speed
 const phoObjectConstructor = (miss, size, speed) => {
-  for (let i = 0; i < miss.length; i++) {
-    phoData.miss = miss.push[i]
-    phoData.size = size.push[i]
-    phoData.speed = speed.push[i]
-    console.log(phoData)
-  }
+
+  phoData.miss = miss.slice()
+  phoData.size = size.slice()
+  phoData.speed = speed.slice()
+  
+  console.log(phoData)
+  // for (let i = 0; i < miss.length; i++) {
+  //   phoData.miss = miss.push[i]
+  //   phoData.size = size.push[i]
+  //   phoData.speed = speed.push[i]
+  // }
 }
 
 
