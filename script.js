@@ -144,19 +144,21 @@ const warningSystem = (object) => {
       warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
       document.querySelector('.warning').appendChild(warning)
 
-      const phoDiv = document.createElement('div')
-      phoDiv.className = 'pho'
-      document.querySelector('.warningzone').appendChild(phoDiv)
-
-
-      const alert = document.createElement('h3')
-      alert.className = 'pho-alert'
-      alert.innerText = "ALERT PHO DETECTED"
-      phoDiv.appendChild(alert)
-
-
+      
+      
+      
+      
       object.forEach((asteroid) => {
-    
+        
+        const phoDiv = document.createElement('div')
+        phoDiv.className = 'pho'
+        document.querySelector('.warningzone').appendChild(phoDiv)
+        
+        const alert = document.createElement('h3')
+        alert.className = 'pho-alert'
+        alert.innerText = "ALERT PHO DETECTED"
+        phoDiv.appendChild(alert)
+
         const phoMISS = document.createElement('p')
         phoMISS.className = 'pho-body'
         phoMISS.innerText = `A near miss at only ${Math.round(asteroid.miss)} miles`
@@ -175,9 +177,9 @@ const warningSystem = (object) => {
     }
 
     const nonPhoDiv = document.createElement('h3')
-    const nonPhoCount = nonhazardous.length
+    const nonPhoCount = nonPho.length
     nonPhoDiv.innerText = `${nonPhoCount} other asteroids were detected`
-    document.querySelector('nullzone').appendChild(nonPhoDiv)
+    document.querySelector('.nullzone').appendChild(nonPhoDiv)
 
   }
 

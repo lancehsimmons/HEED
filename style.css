@@ -1,9 +1,6 @@
-.pho {
-  width: 100px;
-  height: 75px;
-}
 
-.nonpho {
-  width: 100px;
-  height: 15px;
+.warningzone {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
