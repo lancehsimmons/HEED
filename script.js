@@ -1,4 +1,4 @@
-console.log ('we are connected')
+console.log('we are connected')
 
 // PSEUDO JS
 // 1 get the fetch working
@@ -39,8 +39,8 @@ const missMiles = []
 const isHazardous = []
 const pho = [] /*array of miss distances*/
 const nonPho = [] /*array of miss distances*/
-const phoSizeAll = []
-const phoSpeedAll = []
+const phoSizeAll = [] /* all search sizes*/
+const phoSpeedAll = [] /* all search speeds*/
 const phoSize = []
 const phoSpeed = []
 
@@ -48,55 +48,55 @@ const phoSpeed = []
 // fetch address should go like this: 
 //   fetch(`${BASE_URL}s=${title}`)
 fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c')
-    .then((res) => { return res.json() })
+  .then((res) => { return res.json() })
 
-    .then((resJSON) => {
-      // console.log(resJSON)
-      // reference for object structure of neo object
-      // console.log(resJSON.near_earth_objects)
-      // this one works to get the boolean back from first array in NEO object
-      // console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
+  .then((resJSON) => {
+    // console.log(resJSON)
+    // reference for object structure of neo object
+    // console.log(resJSON.near_earth_objects)
+    // this one works to get the boolean back from first array in NEO object
+    // console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
 
-      let dateExtractor = resJSON.near_earth_objects
+    let dateExtractor = resJSON.near_earth_objects
 
-      let dates = []
-      // this for loop generates an array of date objects. 
-      for (var property in dateExtractor) {
-        // console.log(property)
-        dates.push(property)
-      }
-      // console.log(dates)
-      let neodDay
-      for (i = 0; i < dates.length; i++) {
-        // console.log(dates[i])
-        neoDay = dates[i]
-        // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
-        // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
-        // logging the number of asteroids per day (one more than array length). 
-        // console.log(dateExtractor[`${neoDay}`].length + 1)
-
-
-        // on this line asteroidExtractor is returning the date plus the index of each asteroid
-        asteroidExtractor(dateExtractor[`${neoDay}`])
-      }
-      phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
-      warningSystem(pho, nonPho)
-    })
-
-
-    const phoExtractor = (is, miles, size, speed) => {
-      for (let i = 0; i < is.length; i++) {
-        if (is[i] === true) {
-          // console.log(miles[i])
-          pho.push(miles[i])
-          phoSize.push(size[i])
-          phoSpeed.push(speed[i])
-        }
-        else if (is[i] === false) {
-          nonPho.push(miles[i])
-        }
-      }
+    let dates = []
+    // this for loop generates an array of date objects. 
+    for (var property in dateExtractor) {
+      // console.log(property)
+      dates.push(property)
     }
+    // console.log(dates)
+    let neodDay
+    for (i = 0; i < dates.length; i++) {
+      // console.log(dates[i])
+      neoDay = dates[i]
+      // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
+      // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
+      // logging the number of asteroids per day (one more than array length). 
+      // console.log(dateExtractor[`${neoDay}`].length + 1)
+
+
+      // on this line asteroidExtractor is returning the date plus the index of each asteroid
+      asteroidExtractor(dateExtractor[`${neoDay}`])
+    }
+    phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
+    warningSystem(pho, nonPho, phoSpeed, phoSize)
+  })
+
+
+const phoExtractor = (is, miles, size, speed) => {
+  for (let i = 0; i < is.length; i++) {
+    if (is[i] === true) {
+      // console.log(miles[i])
+      pho.push(miles[i])
+      phoSize.push(size[i])
+      phoSpeed.push(speed[i])
+    }
+    else if (is[i] === false) {
+      nonPho.push(miles[i])
+    }
+  }
+}
 
 
 
@@ -118,40 +118,63 @@ const asteroidExtractor = (day) => {
     phoSpeedAll.push(asteroid.close_approach_data[0].relative_velocity.miles_per_hour)
 
   })
-  
+
 }
 const warningDiv = ".warningzone"
 const nullDiv = '.nullzone'
 const warningSystem = (hazardous, nonhazardous, speed, size) => {
-  
+
   if (pho.length > 0) {
-    const warning = document.createElement('h3')
+
+  const warning = document.createElement('h2')
     warning.id = 'warning'
     warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-    document.body.appendChild(warning)
+    document.querySelector('.warning').appendChild(warning)
 
-    hazardous.forEach((asteroid) => {
+  const phoDiv = document.createElement('div')
+    phoDiv.className = 'pho'
+    document.querySelector('.warningzone').appendChild(phoDiv)
+
+
+  const alert = document.createElement('h3')
+    alert.className = 'pho-body'
+    alert.innerText = "ALERT PHO DETECTED"
+    phoDiv.appendChild(alert)
+
+
+  hazardous.forEach((asteroid) => {
       // console.log(asteroid)
-      const phoDiv = document.createElement('div')
-      // const phoMISS = document.createElement('p')
-      // const phoSIZE = document.createElement('p')
-      // const phoSPEED = document.createElement('p')
-      phoDiv.className = 'pho'
-      phoMISS.innerText = `A near miss at only ${Math.round(asteroid)} miles`
-      document.body.appendChild(phoDiv)
+    const phoMISS = document.createElement('p')
+      phoMISS.className = 'pho-body'
+    phoMISS.innerText = `A near miss at only ${Math.round(asteroid)} miles`
+    phoDiv.appendChild(phoMISS)
+
+  })
+    
+  speed.forEach((asteroid) => {
+    const phoSPEED = document.createElement('p')
+      phoSPEED.className = 'pho-body'
+      phoSPEED.innerText = `speed ${asteroid} mph`
+      phoDiv.appendChild(phoSPEED)
     })
+    
+  size.forEach((asteroid) => {
+      // console.log(asteroid)
+    const phoSIZE = document.createElement('p')
+      phoSIZE.className = 'pho-body'
+      phoSIZE.innerText = `size ${asteroid} feet`
+      phoDiv.appendChild(phoSIZE)
+
+    })
+
   }
 
-  
+  const nonPhoDiv = document.createElement('h3')
+  const nonPhoCount = nonhazardous.length
+  nonPhoDiv.innerText = `${nonPhoCount} other asteroids were detected`
 
-  nonhazardous.forEach((asteroid) => {
-    const nonphoDiv = document.createElement('div')
-    nonphoDiv.className = 'nonPho'
-    nonphoDiv.innerText = asteroid
-    document.body.appendChild(nonphoDiv)
-  })
-  
 }
+
 
 
 // console.log(missMiles)
