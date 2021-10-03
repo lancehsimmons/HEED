@@ -166,19 +166,19 @@ const warningSystem = (object) => {
 
         const phoSPEED = document.createElement('p')
         phoSPEED.className = 'pho-body'
-        phoSPEED.innerText = `speed: ${asteroid.speed} mph`
+        phoSPEED.innerText = `speed: ${Math.round(asteroid.speed)} mph`
         phoDiv.appendChild(phoSPEED)
 
         const phoSIZE = document.createElement('p')
         phoSIZE.className = 'pho-body'
-        phoSIZE.innerText = `size: ${asteroid.size} feet`
+        phoSIZE.innerText = `size: ${Math.round(asteroid.size)} feet`
         phoDiv.appendChild(phoSIZE)
       })
     }
 
     const nonPhoDiv = document.createElement('h3')
     const nonPhoCount = nonPho.length
-    nonPhoDiv.innerText = `${nonPhoCount} other asteroids were detected`
+    nonPhoDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
     document.querySelector('.nullzone').appendChild(nonPhoDiv)
 
   }
