@@ -32,9 +32,6 @@ const DOMAIN = 'http://www.omdbapi.com/';
 const API_KEY = 'afc12be0'
 const BASE_URL = `${DOMAIN}?apikey=${API_KEY}&`;
 
-// const button = document.querySelector('button')
-// button.addEventListener('click', () => { let title = document.getElementById('blank').value })
-
 const isHazardous = [] /* boolean array*/
 
 const missMiles = [] /* all search miss miles*/
@@ -47,9 +44,22 @@ const phoSize = []
 
 const phoData = []
 
-
-
 const nonPho = [] /*array of miss distances*/
+
+  // this code straight from the country search lecture with my values
+  const submitButton = document.querySelector('#get-date');
+
+  submitButton.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    console.log('the button was clicked');
+  
+    const inputData = document.querySelector('#date-search').value;
+    fetchData(inputData);
+
+    // after we finish fetching and rendering our country data
+    //    empty the search bar.
+    document.querySelector('#date-search').value = '';
+  });
 
   // this code straight from the country search lecture with my values
   const fetchData = (date) => {
@@ -61,8 +71,8 @@ const nonPho = [] /*array of miss distances*/
   fetch(nasaAPIUrl)
     .then((res) => { return res.json() })
     .then((resJSON) => {
-      console.log(resJSON)
-      // showCountryData(resJSON);
+      // console.log(resJSON)
+      resetData(isHazardous, missMiles, phoSizeAll, phoSpeedAll, pho, phoSpeed, phoSize, phoData, nonPho)
 
       let dateExtractor = resJSON.near_earth_objects
 
@@ -141,7 +151,7 @@ const phoExtractor = (is, allMiles, allSize, allSpeed) => {
   for (let i = 0; i < is.length; i++) {
     if (is[i] === true) {
       // builds hazardous arrays
-      console.log(allMiles[i])
+      // console.log(allMiles[i])
       pho.push(allMiles[i])
       phoSize.push(allSize[i])
       phoSpeed.push(allSpeed[i])
@@ -194,7 +204,7 @@ const warningSystem = (object) => {
 
     if (pho.length > 0) {
 
-      console.log(object)
+      // console.log(object)
 
       // const warning = document.createElement('h2')
       // warning.id = 'warning'
@@ -233,24 +243,39 @@ const warningSystem = (object) => {
     const nonPhoCount = nonPho.length
     nonPhoDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
     document.querySelector('.safezone').appendChild(nonPhoDiv)      
-
   }
 
-  // this code straight from the country search lecture with my values
-  const submitButton = document.querySelector('#get-date');
+const resetData = (is, missAll, sizeAll, speedAll, miss, size, speed, data, nonMiss ) => {
+// const resetData = (...datas) => {
+  console.log('reset running here')
 
-  submitButton.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    console.log('the button was clicked');
+  while(data.length > 0) {
+    data.pop();
+}
+
+  is.length = 0
+  missAll.length = 0
+  sizeAll.length = 0
+  speedAll.length = 0
+  miss.length = 0
+  speed.length = 0
+  size.length = 0
+  // data.length = 0
+  nonMiss.length = 0
   
-    const inputData = document.querySelector('#date-search').value;
-  
-    fetchData(inputData);
-  
-    // after we finish fetching and rendering our country data
-    //    empty the search bar.
-    document.querySelector('#date-search').value = '';
-  });
+  // while(datas.length > 0) {datas.pop();}
+  console.log('data')
+  console.log(phoData)
+
+  console.log(data)
+  console.log(pho)
+}
+
+
+
+
+
+
 
 // console.log(missMiles)
 // console.log(isHazardous)
@@ -258,8 +283,5 @@ const warningSystem = (object) => {
 // console.log(nonPho)
 // console.log(phoSizeAll)
 // console.log(phoSpeedAll)
-console.log(phoSize)
-console.log(phoSpeed)
-
-
-
+// console.log(phoSize)
+// console.log(phoSpeed)
