@@ -91,10 +91,10 @@ const nonPho = [] /*array of miss distances*/
       warningSystem(phoData)
 
     })
-    .catch((err) => {
-      // check if they spelled the country wrong?
-      console.error(`ERROR: ${err}`)
-    });
+    // .catch((err) => {
+    //   // check if they spelled the country wrong?
+    //   console.error(`ERROR: ${err}`)
+    // });
 }
 
 
@@ -179,19 +179,27 @@ const phoExtractor = (is, allMiles, allSize, allSpeed) => {
   const nullDiv = '.nullzone'
 
 const warningSystem = (object) => {
-  document.querySelector('.main-movie-div').innerHTML = ''
+
+  const results = document.getElementById('result-section')
+  results.innerHTML = ''
+
+  const phoDisplay = document.createElement('div')
+  phoDisplay.className = 'warningzone'
+  document.getElementById('result-section').appendChild(phoDisplay)
+
+  const nonphoDisplay = document.createElement('div')
+  nonphoDisplay.className = 'safezone'
+  document.getElementById('result-section').appendChild(nonphoDisplay)
+
+
     if (pho.length > 0) {
 
       console.log(object)
 
-      const warning = document.createElement('h2')
-      warning.id = 'warning'
-      warning.innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-      document.querySelector('.warning').appendChild(warning)
-
-      
-      
-      
+      // const warning = document.createElement('h2')
+      // warning.id = 'warning'
+      document.getElementById('warning').innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
+      // document.querySelector('.warning').appendChild(warning)
       
       object.forEach((asteroid) => {
         
@@ -224,7 +232,7 @@ const warningSystem = (object) => {
     const nonPhoDiv = document.createElement('h3')
     const nonPhoCount = nonPho.length
     nonPhoDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
-    document.querySelector('.nullzone').appendChild(nonPhoDiv)
+    document.querySelector('.safezone').appendChild(nonPhoDiv)      
 
   }
 
