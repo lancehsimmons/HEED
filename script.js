@@ -51,45 +51,90 @@ const phoData = []
 
 const nonPho = [] /*array of miss distances*/
 
-
-// fetch address should go like this: 
-//   fetch(`${BASE_URL}s=${title}`)
-fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c')
-  .then((res) => { return res.json() })
-
-  .then((resJSON) => {
-    // console.log(resJSON)
-    // reference for object structure of neo object
-    // console.log(resJSON.near_earth_objects)
-    // this one works to get the boolean back from first array in NEO object
-    // console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
-
-    let dateExtractor = resJSON.near_earth_objects
-
-    let dates = []
-    // this for loop generates an array of date objects. 
-    for (var property in dateExtractor) {
-      // console.log(property)
-      dates.push(property)
-    }
-    // console.log(dates)
-    let neodDay
-    for (i = 0; i < dates.length; i++) {
-      // console.log(dates[i])
-      neoDay = dates[i]
-      // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
-      // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
-      // logging the number of asteroids per day (one more than array length). 
-      // console.log(dateExtractor[`${neoDay}`].length + 1)
+  // this code straight from the country search lecture with my values
+  const fetchData = (date) => {
+  const nasaAPIUrl = `https://api.nasa.gov/neo/rest/v1/feed?${date}=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c`;
 
 
-      // on this line asteroidExtractor is returning the date plus the index of each asteroid
-      asteroidExtractor(dateExtractor[`${neoDay}`])
-    }
-    phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
-    // phoArrayConstructor(pho, phoSpeed, phoSize)
-    warningSystem(phoData)
-  })
+  console.log('Making our request');
+
+  fetch(nasaAPIUrl)
+    .then((res) => { return res.json() })
+    .then((resJSON) => {
+      console.log(resJSON)
+      // showCountryData(resJSON);
+
+      let dateExtractor = resJSON.near_earth_objects
+
+      let dates = []
+      // this for loop generates an array of date objects. 
+      for (var property in dateExtractor) {
+        // console.log(property)
+        dates.push(property)
+      }
+      // console.log(dates)
+      let neodDay
+      for (i = 0; i < dates.length; i++) {
+        // console.log(dates[i])
+        neoDay = dates[i]
+        // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
+        // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
+        // logging the number of asteroids per day (one more than array length). 
+        // console.log(dateExtractor[`${neoDay}`].length + 1)
+  
+  
+        // on this line asteroidExtractor is returning the date plus the index of each asteroid
+        asteroidExtractor(dateExtractor[`${neoDay}`])
+      }
+      phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
+      // phoArrayConstructor(pho, phoSpeed, phoSize)
+      warningSystem(phoData)
+
+    })
+    .catch((err) => {
+      // check if they spelled the country wrong?
+      console.error(`ERROR: ${err}`)
+    });
+}
+
+
+
+// fetch('https://api.nasa.gov/neo/rest/v1/feed?2021-10-01=START_DATE&api_key=xeZDkYctu0fubDwBXSHdKpQCuL0eRQtNE1edmh7c')
+//   .then((res) => { return res.json() })
+
+//   .then((resJSON) => {
+//     // console.log(resJSON)
+//     // reference for object structure of neo object
+//     // console.log(resJSON.near_earth_objects)
+//     // this one works to get the boolean back from first array in NEO object
+//     // console.log(resJSON.near_earth_objects['2021-10-02'][0].is_potentially_hazardous_asteroid)
+
+//     let dateExtractor = resJSON.near_earth_objects
+
+//     let dates = []
+//     // this for loop generates an array of date objects. 
+//     for (var property in dateExtractor) {
+//       // console.log(property)
+//       dates.push(property)
+//     }
+//     // console.log(dates)
+//     let neodDay
+//     for (i = 0; i < dates.length; i++) {
+//       // console.log(dates[i])
+//       neoDay = dates[i]
+//       // this line logs the i_p_h_a boolean for the first asteroid of each date returned from the 7 day search results
+//       // console.log(dateExtractor[`${neoDay}`][0].is_potentially_hazardous_asteroid)
+//       // logging the number of asteroids per day (one more than array length). 
+//       // console.log(dateExtractor[`${neoDay}`].length + 1)
+
+
+//       // on this line asteroidExtractor is returning the date plus the index of each asteroid
+//       asteroidExtractor(dateExtractor[`${neoDay}`])
+//     }
+//     phoExtractor(isHazardous, missMiles, phoSizeAll, phoSpeedAll)
+//     // phoArrayConstructor(pho, phoSpeed, phoSize)
+//     warningSystem(phoData)
+//   })
 
 // builds arrays of hazardous and non hazardous asteroid datas
 const phoExtractor = (is, allMiles, allSize, allSpeed) => {
@@ -134,7 +179,7 @@ const phoExtractor = (is, allMiles, allSize, allSpeed) => {
   const nullDiv = '.nullzone'
 
 const warningSystem = (object) => {
-      
+  document.querySelector('.main-movie-div').innerHTML = ''
     if (pho.length > 0) {
 
       console.log(object)
@@ -183,7 +228,21 @@ const warningSystem = (object) => {
 
   }
 
+  // this code straight from the country search lecture with my values
+  const submitButton = document.querySelector('#get-date');
 
+  submitButton.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    console.log('the button was clicked');
+  
+    const inputData = document.querySelector('#date-search').value;
+  
+    fetchData(inputData);
+  
+    // after we finish fetching and rendering our country data
+    //    empty the search bar.
+    document.querySelector('#date-search').value = '';
+  });
 
 // console.log(missMiles)
 // console.log(isHazardous)
