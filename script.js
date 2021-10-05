@@ -59,6 +59,22 @@ const nonPho = [] /*array of miss distances*/
       console.log(resJSON)
 
 
+      while (isHazardous.length > 0) {
+        missMiles.pop()
+        phoSizeAll.pop()
+        phoSpeedAll.pop()
+        isHazardous.pop()
+      }
+
+      while (phoData.length > 0) {
+        for (var member in phoData) delete phoData[member];
+        phoData.pop()
+      }
+
+      while (nonPho.length > 0) {
+        nonPho.pop()
+      }
+
       let dateExtractor = resJSON.near_earth_objects
 
       let dates = []
