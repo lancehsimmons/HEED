@@ -1,9 +1,23 @@
 
+body {
+  background-color: rgb(33, 11, 69)
+}
+
 header {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
   text-align: center;
+}
+
+#title {
+  font-family: 'Trade Winds', cursive;
+  font-size: 64px;
+  background-clip: text;
+  background: -webkit-linear-gradient(orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
 }
 
 #search-bar {
@@ -17,16 +31,18 @@ header {
 .warningzone {
   display: flex;
   justify-content: center;
-  align-content: flex-start;
-  flex-flow: wrap;
+  align-content: flex-start; 
+  flex-flow: wrap; 
+  flex-wrap: row wrap;
 }
 
 .pho {
-  margin: 10px;
+  margin: 15px;
   padding: 10px;
   background-color: red;
   color:orange;
   border-radius: 10px;
+  outline: 5px solid orange;
 }
 
 .pho-alert {
@@ -36,4 +52,8 @@ header {
 
 .pho-size {
   margin-bottom: 0;
+}
+
+.safezone {
+  text-align: center;
 }
