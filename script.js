@@ -180,7 +180,7 @@ const warningSystem = (object) => {
         
         const alert = document.createElement('h3')
         alert.className = 'pho-alert'
-        alert.innerText = "ALERT PHO DETECTED"
+        alert.innerText = "HAZARDOUS \nASTEROID \nDETECTED"
         phoDiv.appendChild(alert)
 
         const phoMISS = document.createElement('p')
