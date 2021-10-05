@@ -1,23 +1,37 @@
 
 body {
-  background-color: rgb(33, 11, 69)
+  background-color: rgb(33, 11, 69);
+  font-family: 'Sarabun', sans-serif;
 }
 
 header {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
 }
 
 #title {
-  font-family: 'Trade Winds', cursive;
-  font-size: 64px;
+  line-height: 80%;
+  margin: 20px 0px 0px 0px;
+  font-family: 'Fugaz One', cursive;
+  font-size: 80px;
+  font-stretch: extra-expanded;
   background-clip: text;
   background: -webkit-linear-gradient(orange, red);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
-  
+  /* gradient from here https://cssgradient.io/blog/css-gradient-text/ */
+}
+
+#subtitle {
+  font-family: 'Sarabun', sans-serif;
+  margin: 0px, 10px;
+  color: orange;
+  background-clip: text;
+  background: -webkit-linear-gradient(orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  /* gradient from here https://cssgradient.io/blog/css-gradient-text/ */
+  /* margin: 0px, 10px; */
 }
 
 #search-bar {
@@ -26,6 +40,7 @@ header {
 
 .warning {
   text-align: center;
+  color: orange;
 }
 
 .warningzone {
