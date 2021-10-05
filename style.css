@@ -7,11 +7,32 @@ header {
 }
 
 #search-bar {
-  text-align: center
+  text-align: center;
+}
+
+.warning {
+  text-align: center;
 }
 
 .warningzone {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.pho {
+  margin: 10px;
+  padding: 10px;
+  background-color: red;
+  color:orange;
+  border-radius: 10px;
+}
+
+.pho-alert {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.pho-size {
+  margin-bottom: 0;
 }

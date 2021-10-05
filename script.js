@@ -194,7 +194,7 @@ const warningSystem = (object) => {
         phoDiv.appendChild(phoSPEED)
 
         const phoSIZE = document.createElement('p')
-        phoSIZE.className = 'pho-body'
+        phoSIZE.className = 'pho-size'
         phoSIZE.innerText = `size: ${Math.round(asteroid.size)} feet`
         phoDiv.appendChild(phoSIZE)
       })
