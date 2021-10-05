@@ -41,6 +41,7 @@ header {
 .warning {
   text-align: center;
   color: orange;
+  font-weight: extra-bold;
 }
 
 .warningzone {
@@ -64,7 +65,7 @@ header {
 }
 @keyframes mymove {
   from {box-shadow: 0px 0px 30px 30px (255, 0, 0, 0.1);}
-  to {box-shadow: 0px 0px 30px 30px rgba(255, 0, 0, 0.488);}
+  to {box-shadow: 0px 0px 30px 30px rgba(233, 86, 211, 0.954);}
 }
 
 .pho-alert {
@@ -78,6 +79,24 @@ header {
 }
 
 .safezone {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start; 
+  flex-flow: wrap; 
+  flex-wrap: row wrap;
+}
+
+.nonPho {
+  margin: 15px;
+  padding: 10px;
+  background-color: rgb(131, 166, 241);
+  color: rgb(33, 11, 69);
+  border-radius: 10px;
+  outline: 5px solid rgb(75, 182, 90);
+}
+
+.safezone {
+  margin: 20px;
   text-align: center;
   color: orange;
 }

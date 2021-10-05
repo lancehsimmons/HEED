@@ -200,10 +200,14 @@ const warningSystem = (object) => {
       })
     }
 
-    const nonPhoDiv = document.createElement('h3')
+    const nonPhoDiv = document.createElement('div')
+    nonPhoDiv.className = 'nonPho'
+    document.querySelector('.safezone').appendChild(nonPhoDiv)
+  
+    const nonPhoCountDiv = document.createElement('p')
     const nonPhoCount = nonPho.length
-    nonPhoDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
-  document.querySelector('.safezone').appendChild(nonPhoDiv)
+    nonPhoCountDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
+    nonPhoDiv.appendChild(nonPhoCountDiv)
   
   console.log(phoData)
   }
