@@ -16,8 +16,10 @@ header {
 
 .warningzone {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: flex-start;
+  flex-flow: wrap;
+  /* justify-content: space-around; */
 }
 
 .pho {

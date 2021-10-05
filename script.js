@@ -185,7 +185,7 @@ const warningSystem = (object) => {
 
         const phoMISS = document.createElement('p')
         phoMISS.className = 'pho-body'
-        phoMISS.innerText = `A near miss at only ${Math.round(asteroid.miss)} miles`
+        phoMISS.innerText = `A near miss at only \n${Math.round(asteroid.miss)} miles`
         phoDiv.appendChild(phoMISS)
 
         const phoSPEED = document.createElement('p')
