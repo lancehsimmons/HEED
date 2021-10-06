@@ -10,7 +10,7 @@ header {
 }
 
 .title {
-  margin: 20px;
+  margin: 20px 0px 0px 0px;
   display: inline-flex;
   vertical-align: top;
 }
@@ -29,9 +29,9 @@ header {
 }
 
 #subtitle {
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Sarabun', sans-serif;
-  margin: 0px, 10px;
+  margin: 0px 0px 10px 0px;
   color: orange;
   background-clip: text;
   background: -webkit-linear-gradient(orange, red);
