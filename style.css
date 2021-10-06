@@ -16,7 +16,7 @@ header {
 }
 
 #title {
-  line-height: 80%;
+  line-height: 90%;
   margin: 0px 0px 0px 0px;
   font-family: 'Fugaz One', cursive;
   font-size: 80px;
@@ -49,6 +49,28 @@ input {
   width: 95px;
 }
 
+#search-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-end;
+
+}
+
+#dish {
+  padding: 0px 0px 0px 10px;
+}
+
+#dish.animate {
+  padding: 0px 0px 0px 10px;
+  animation: dishscan 1s infinite;
+  animation-direction: alternate
+}
+
+@keyframes dishscan {
+  from {transform: scaleX(0);}
+  to {transform: scaleX(-1);}
+}
 
 .warning {
   text-align: center;
