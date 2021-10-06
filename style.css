@@ -10,12 +10,14 @@ header {
 }
 
 .title {
+  margin: 20px;
   display: inline-flex;
+  vertical-align: top;
 }
 
 #title {
   line-height: 80%;
-  margin: 20px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   font-family: 'Fugaz One', cursive;
   font-size: 80px;
   font-stretch: extra-expanded;
