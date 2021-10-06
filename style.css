@@ -57,8 +57,9 @@ input {
 }
 
 #dish {
-  padding: 0px 0px 0px 10px;
+  padding: 0px 0px 0px 20px;
   animation: dishscan 1s infinite;
+  transform: scaleX(1);
   animation-play-state: paused;
   animation-direction: alternate;
 }

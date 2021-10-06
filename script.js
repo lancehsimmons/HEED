@@ -47,10 +47,6 @@ const nonPho = [] /*array of miss distances*/
 
 const dish = document.getElementById('dish')
 
-window.onload = () => {
-  dish.style.setProperty('--toggle', '0')
-}
-
 
   // this code straight from the country search lecture with my values
   const fetchData = (date) => {
@@ -236,10 +232,11 @@ const warningSystem = (object) => {
 
 const dishAnimate = (on_off) => {
   if (on_off === 0) {
-    dish.style.setProperty('animation-play-state', 'paused')
+    dish.style.setProperty('animation-duration', '0s')
+    // dish.style.setProperty('transform', 'scaleX(1)')
   }
   else if (on_off === 1) {
     dish.style.setProperty('animation-play-state', 'running')
-    dish.style.setProperty('transform: scaleX(1)')
+
   }
   }
