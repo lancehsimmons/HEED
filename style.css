@@ -45,6 +45,11 @@ header {
   text-align: center;
 }
 
+input {
+  width: 95px;
+}
+
+
 .warning {
   text-align: center;
   color: orange;
@@ -53,6 +58,7 @@ header {
 
 .warningzone {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: flex-start; 
   flex-flow: wrap; 
@@ -96,10 +102,10 @@ header {
 .nonPho {
   margin: 15px;
   padding: 10px;
-  background-color: rgb(131, 166, 241);
+  background-color: rgba(233, 86, 211, 0.954);
   color: rgb(33, 11, 69);
   border-radius: 10px;
-  outline: 5px solid rgb(75, 182, 90);
+  /*outline: 5px solid rgb(75, 182, 90); */
 }
 
 .safezone {
@@ -107,3 +113,25 @@ header {
   text-align: center;
   color: orange;
 }
+
+.safe-count {
+  margin: 0;
+}
+
+@media (max-width: 400px){
+  html,
+  .warningzone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start; 
+    flex-flow: wrap; 
+  }
+}
+
+@media (max-width: 400px){
+  #warning {
+    font-size: 15px;
+  }
+}
+

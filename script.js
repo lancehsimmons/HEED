@@ -198,13 +198,16 @@ const warningSystem = (object) => {
         phoSIZE.innerText = `size: ${Math.round(asteroid.size)} feet`
         phoDiv.appendChild(phoSIZE)
       })
+    } else {
+      document.getElementById('warning').innerText = "NO POTENTIALLY HAZARDOUS ASTEROIDS DETECTED \nThe coast is clear! \nPlease enjoy your time on Earth. \n\n(double-check your date search format)"
     }
 
     const nonPhoDiv = document.createElement('div')
     nonPhoDiv.className = 'nonPho'
     document.querySelector('.safezone').appendChild(nonPhoDiv)
   
-    const nonPhoCountDiv = document.createElement('h4')
+  const nonPhoCountDiv = document.createElement('h4')
+  nonPhoCountDiv.className = 'safe-count'
     const nonPhoCount = nonPho.length
     nonPhoCountDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
     nonPhoDiv.appendChild(nonPhoCountDiv)
