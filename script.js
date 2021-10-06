@@ -204,25 +204,21 @@ const warningSystem = (object) => {
     nonPhoDiv.className = 'nonPho'
     document.querySelector('.safezone').appendChild(nonPhoDiv)
   
-    const nonPhoCountDiv = document.createElement('p')
+    const nonPhoCountDiv = document.createElement('h4')
     const nonPhoCount = nonPho.length
     nonPhoCountDiv.innerText = `${nonPhoCount} other non-hazardous asteroids were detected`
     nonPhoDiv.appendChild(nonPhoCountDiv)
-  
-  console.log(phoData)
-  }
+    }
 
   // this code straight from the country search lecture with my values
   const submitButton = document.querySelector('#get-date');
 
   submitButton.addEventListener('click', (ev) => {
     ev.preventDefault();
-    console.log('the button was clicked');
   
     const inputData = document.querySelector('#date-search').value;
     fetchData(inputData);
 
     document.querySelector('#date-search').value = '';
-    console.log(inputData)
 
   });
