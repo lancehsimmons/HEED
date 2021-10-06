@@ -240,5 +240,6 @@ const dishAnimate = (on_off) => {
   }
   else if (on_off === 1) {
     dish.style.setProperty('animation-play-state', 'running')
+    dish.style.setProperty('transform: scaleX(1)')
   }
   }
