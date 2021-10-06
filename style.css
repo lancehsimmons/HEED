@@ -64,12 +64,6 @@ input {
   animation-direction: alternate;
 }
 
-/* #dish.animate {
-  padding: 0px 0px 0px 10px;
-  animation: dishscan 1s infinite;
-  animation-direction: alternate
-} */
-
 @keyframes dishscan {
   from {transform: scaleX(1);}
   to {transform: scaleX(-1);}
@@ -158,5 +152,24 @@ input {
   #warning {
     font-size: 15px;
   }
+}
+
+@media (max-width: 345px){
+  #search-section { 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #search-bar {
+    display: flex;
+    text-align: center;
+  }
+
+  #dish {
+    padding: 10px 0px 0px 20px;
+  }
+
 }
 
