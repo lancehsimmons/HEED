@@ -45,6 +45,11 @@ const nonPho = [] /*array of miss distances*/
 
 // const dates = []
 
+const dish = document.getElementById('dish')
+
+window.onload = () => {
+  dish.style.setProperty('--toggle', '0')
+}
 
 
   // this code straight from the country search lecture with my values
@@ -58,6 +63,7 @@ const nonPho = [] /*array of miss distances*/
     .then((resJSON) => {
       console.log(resJSON)
 
+      dishAnimate(0)
 
       while (isHazardous.length > 0) {
         missMiles.pop()
@@ -222,6 +228,17 @@ const warningSystem = (object) => {
     const inputData = document.querySelector('#date-search').value;
     fetchData(inputData);
 
+    dishAnimate(1)
+
     document.querySelector('#date-search').value = '';
 
   });
+
+const dishAnimate = (on_off) => {
+  if (on_off === 0) {
+    dish.style.setProperty('animation-play-state', 'paused')
+  }
+  else if (on_off === 1) {
+    dish.style.setProperty('animation-play-state', 'running')
+  }
+  }

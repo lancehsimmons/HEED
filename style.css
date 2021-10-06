@@ -54,21 +54,23 @@ input {
   justify-content: center;
   text-align: center;
   align-items: flex-end;
-
 }
 
 #dish {
   padding: 0px 0px 0px 10px;
+  animation: dishscan 1s infinite;
+  animation-play-state: paused;
+  animation-direction: alternate;
 }
 
-#dish.animate {
+/* #dish.animate {
   padding: 0px 0px 0px 10px;
   animation: dishscan 1s infinite;
   animation-direction: alternate
-}
+} */
 
 @keyframes dishscan {
-  from {transform: scaleX(0);}
+  from {transform: scaleX(1);}
   to {transform: scaleX(-1);}
 }
 
