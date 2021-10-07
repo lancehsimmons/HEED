@@ -147,17 +147,24 @@ input {
 }
 
 #nasa {
-  width: 10%;
+  width: 38%;
 }
 
-#nasa-link{
+/* .link-box{
   display: flex;
   flex-direction: column; 
   justify-content: center;
   vertical-align: top;
   text-align: center;
+} */
+
+#micro {
+  width: 100%
 }
 
+#tunguska {
+  width: 69%;
+}
 
 @media (max-width: 400px){
   html,
