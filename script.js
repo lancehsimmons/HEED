@@ -113,11 +113,8 @@ const dish = document.getElementById('dish')
 const phoExtractor = (is, allMiles, allSize, allSpeed) => {
   for (let i = 0; i < is.length; i++) {
     if (is[i] === true) {
-      // builds hazardous arrays
-      // console.log(allMiles[i])
-      // pho.push(allMiles[i])
-      // phoSize.push(allSize[i])
-      // phoSpeed.push(allSpeed[i])
+
+
       
       phoData.push({miss: allMiles[i], size: allSize[i], speed: allSpeed[i]})
 
@@ -169,10 +166,7 @@ const warningSystem = (object) => {
 
       // console.log(object)
 
-      // const warning = document.createElement('h2')
-      // warning.id = 'warning'
       document.getElementById('warning').innerText = "WARNING: POSSIBLE IMMINENT CATACLYSM"
-      // document.querySelector('.warning').appendChild(warning)
       
       object.forEach((asteroid) => {
         
@@ -233,7 +227,6 @@ const warningSystem = (object) => {
 const dishAnimate = (on_off) => {
   if (on_off === 0) {
     dish.style.setProperty('animation-duration', '0s')
-    // dish.style.setProperty('transform', 'scaleX(1)')
   }
   else if (on_off === 1) {
     dish.style.setProperty('animation-play-state', 'running')
