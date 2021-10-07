@@ -75,6 +75,31 @@ After that once I reached the level of extracting data for each asteroid I reali
           console.log(asteroid)
           console.log(asteroid.close_approach_data[0].miss_distance.miles)
 
+I didn't add the form event listener until I had already built all of the parsing for my api data. Once I tried refreshing a search I realized the new search was stacking on the previous one. My solution was to reset all of the arrays I used to parse the data.
+
+    fetch(nasaAPIUrl)
+    .then((res) => { return res.json() })
+    .then((resJSON) => {
+      console.log(resJSON)
+
+      dishAnimate(0)
+
+      while (isHazardous.length > 0) {
+        missMiles.pop()
+        phoSizeAll.pop()
+        phoSpeedAll.pop()
+        isHazardous.pop()
+      }
+
+      while (phoData.length > 0) {
+        for (var member in phoData) delete phoData[member];
+        phoData.pop()
+      }
+
+      while (nonPho.length > 0) {
+        nonPho.pop()
+      }
+
 
 ### Timeframes
 | Component     | Estimated Time | Actual Time  |
