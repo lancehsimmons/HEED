@@ -90,6 +90,8 @@ input {
   background-color: red;
   color:orange;
   border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
   outline: 5px solid orange;
   animation: mymove 2s infinite;
   animation-timing-function: ease-in-out;
@@ -136,6 +138,26 @@ input {
 .safe-count {
   margin: 0;
 }
+
+.links {
+  display: inline-flex;
+  justify-content: center;
+  /* align-content: center; */
+  text-align: center;
+}
+
+#nasa {
+  width: 10%;
+}
+
+#nasa-link{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  vertical-align: top;
+  text-align: center;
+}
+
 
 @media (max-width: 400px){
   html,
