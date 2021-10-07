@@ -172,6 +172,7 @@ input {
 
 @media (max-width: 345px){
   #search-section { 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -185,6 +186,11 @@ input {
 
   #dish {
     padding: 10px 0px 0px 20px;
+  }
+
+  .links {
+        flex-direction: column;
+
   }
 
 }
