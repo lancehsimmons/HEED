@@ -103,10 +103,10 @@ const dish = document.getElementById('dish')
       warningSystem(phoData)
 
     })
-    // .catch((err) => {
-    //   // check if they spelled the country wrong?
-    //   console.error(`ERROR: ${err}`)
-    // });
+    .catch((err) => {
+      // check if they spelled the country wrong?
+      console.error(`ERROR: ${err}`)
+    });
 }
 
 // builds arrays of hazardous and non hazardous asteroid datas

@@ -75,6 +75,19 @@ After that once I reached the level of extracting data for each asteroid I reali
           console.log(asteroid.close_approach_data[0].miss_distance.miles)
 
 
+### Timeframes
+| Component     | Estimated Time | Actual Time  |
+| :-------------: |:-------------:| :-----:|
+| psuedocode JS     | 1hr | 45min |
+| HTML Structure    | 2hr |   3hr |
+| Javascript API basics | 1hr |    2hr |
+| Javascript API data sorting | 8 hr | 13 hr |
+| Rendering data on HTML | 4hr | 8hr |
+| CSS styling | 5hr | 8hr |
+| Media Query Styling | 2hr | 3hr |
+| Total | 26hr | 37hr |
+
+
 
 
 

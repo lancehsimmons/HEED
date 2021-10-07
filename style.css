@@ -42,7 +42,6 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
   /* gradient from here https://cssgradient.io/blog/css-gradient-text/ */
-  /* margin: 0px, 10px; */
 }
 
 #search-bar {
@@ -130,7 +129,6 @@ input {
   background-color: rgba(233, 86, 211, 0.954);
   color: rgb(33, 11, 69);
   border-radius: 10px;
-  /*outline: 5px solid rgb(75, 182, 90); */
 }
 
 .safezone {
