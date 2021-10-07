@@ -4,6 +4,10 @@ body {
   font-family: 'Sarabun', sans-serif;
 }
 
+a {
+  color:orange
+}
+
 header {
   margin: 0;
   text-align: center;
@@ -140,30 +144,14 @@ input {
 }
 
 .links {
-  display: inline-flex;
-  justify-content: center;
-  /* align-content: center; */
-  text-align: center;
-}
-
-#nasa {
-  width: 38%;
-}
-
-/* .link-box{
   display: flex;
-  flex-direction: column; 
   justify-content: center;
-  vertical-align: top;
+  align-content: center;
   text-align: center;
-} */
-
-#micro {
-  width: 100%
 }
 
-#tunguska {
-  width: 69%;
+.linkdiv {
+  margin: 0px 20px 0px 20px;
 }
 
 @media (max-width: 400px){
